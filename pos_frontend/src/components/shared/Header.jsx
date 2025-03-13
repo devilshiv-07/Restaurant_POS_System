@@ -18,19 +18,20 @@ const Header = () => {
         <input 
           type="text"
           placeholder='Search'
-          className='bg-[#1f1f1f] outline-none text-[#f5f5f5]'
+          className='bg-[#1f1f1f] w-full outline-none text-[#f5f5f5]'
         />
       </div>
 
       {/* LOGGED USER DETAILS  */}
-      <div>
-        <div>
+      <div className='flex items-center gap-4'>
+        <div className='bg-[#1f1f1f] rounded-full p-3 cursor-pointer'>
           <FaBell className='text-[#f5f5f5] text-2xl' />
         </div>
-        <div>
-          <FaUserCircle className='text-[#f5f5f5] text-2xl ' />
-          <div>
-            <h1>Devilshiv</h1>
+        <div className='flex items-center gap-3 cursor-pointer'>
+          <FaUserCircle className='text-[#f5f5f5] text-3xl ' />
+          <div className='flex flex-col items-start'>
+            <h1 className='text-md text-[#f5f5f5]  font-semibold'>Devilshiv</h1>
+            <p className='text-xs text-[#ababab] font-medium'>Admin</p>
           </div>
         </div>
       </div>

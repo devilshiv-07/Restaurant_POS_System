@@ -26,7 +26,7 @@ const RecentOrders = () => {
         </div>
 
         {/* Order List */}
-        <div className="orderList mt-4 px-6 overflow-y-scroll h-[300px] scrollbar-hide">
+        <div className="scrollHide mt-4 px-6 overflow-y-scroll h-[300px] scrollbar-hide">
         <OrderList />
         <OrderList />
         <OrderList />

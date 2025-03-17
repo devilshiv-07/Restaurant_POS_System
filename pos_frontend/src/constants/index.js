@@ -8,7 +8,10 @@ import paneerTikka from '../assets/images/paneer-tika.webp';
 import gulabJamun from '../assets/images/gulab-jamun.webp';
 import pooriSabji from '../assets/images/poori-sabji.webp';
 import roganJosh from '../assets/images/rogan-josh.jpg';
-import { color } from 'framer-motion';
+
+import { MdTableBar, MdCategory } from 'react-icons/md';
+import { BiSolidDish } from 'react-icons/bi';
+// import { color } from 'framer-motion';
 
 export const popularDishes = [
     {
@@ -435,8 +438,8 @@ export const orders = [
 
 
 const buttons = [
-  { label: "Add Table", icon: <MdTableBar />, action: "table" },
-  { label: "Add Category", icon: <MdCategory />, action: "category" },
-  { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
+  // { label: "Add Table", icon: <MdTableBar />, action: "table" },
+  // { label: "Add Category", icon: <MdCategory />, action: "category" },
+  // { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
 ];
 const tabs = ["Metrics", "Orders", "Payments"];

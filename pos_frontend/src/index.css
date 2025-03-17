@@ -8,6 +8,6 @@ body{
     font-family: 'inter', sans-serif;
 }
 
-.orderList::-webkit-scrollbar{
+.scrollHide::-webkit-scrollbar{
     display: none;
 }

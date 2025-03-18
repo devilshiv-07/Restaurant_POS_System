@@ -23,8 +23,8 @@ const OrderList = () => {
         </div>
 
         {/* Item ready or not */}
-        <div className='flex flex-col items-start'>
-            <p className='text-green-600 px-4 text-sm'><FaCheckDouble className='inline mr-2 text-xs'/> Ready</p>
+        <div className='flex flex-col items-end'>
+            <p className='text-green-600 text-sm'><FaCheckDouble className='inline mr-2 text-xs'/> Ready</p>
             <p className='text-[#ababab] text-xs'><FaCircle className='inline mr-2 text-xs text-green-600' /> Ready to serve</p>
         </div>
       </div>

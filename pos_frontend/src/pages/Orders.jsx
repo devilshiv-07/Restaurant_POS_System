@@ -11,7 +11,7 @@ const Orders = () => {
     <section className="bg-[#1f1f1f] h-[calc(100vh-5rem)] overflow-hidden">
 
       {/* Container Div */}
-      <div className="flex items-center justify-between px-10 py-3.5 mt-2">
+      <div className="flex items-center justify-between px-10 py-2 mt-2">
 
         {/* Orders Heading */}
         <div className="flex items-center gap-4">
@@ -44,7 +44,7 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="scrollHide flex flex-wrap overflow-y-scroll pl-[70px] py-4 h-[450px]">
+      <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-4 h-[70vh] py-2 px-10 gap-4">
         <OrderCart />
         <OrderCart />
         <OrderCart />

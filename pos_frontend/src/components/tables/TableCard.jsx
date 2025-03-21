@@ -3,7 +3,7 @@ import { getBgColor } from '../../utils/index'
 
 const TableCard = ({name, status, seats, initial}) => {
   return (
-    <div className="w-[225px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2">
+    <div className="w-[225px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
 
       {/* Table No. and Book detail */}
       <div className="flex items-center justify-between">

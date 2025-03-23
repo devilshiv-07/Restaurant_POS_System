@@ -48,7 +48,7 @@ const Tables = () => {
       <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-4 h-[70vh] gap-6">
         {
           tables.map((table) => (
-            <TableCard key={table.id} name={table.name} status={table.status} initial={table.initial} seats={table.seats} />
+            <TableCard key={table.id} id={table.id} name={table.name} status={table.status} initial={table.initial} seats={table.seats} />
           ))
         }
       </div>

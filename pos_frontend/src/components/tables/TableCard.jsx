@@ -1,9 +1,17 @@
 import React from "react";
 import { getBgColor } from '../../utils/index'
+import { useNavigate } from 'react-router-dom'
 
 const TableCard = ({name, status, seats, initial}) => {
+
+  const navigate = useNavigate();
+  const handleClick = () => {
+    if( status === "Booked") return
+    navigate('/menu');
+  }
+
   return (
-    <div className="w-[225px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
+    <div onClick={handleClick} className="w-[225px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
 
       {/* Table No. and Book detail */}
       <div className="flex items-center justify-between">
@@ -20,6 +28,9 @@ const TableCard = ({name, status, seats, initial}) => {
       <div className="flex items-center justify-center mt-4">
         <h1 className="font-bold text-white rounded-full p-2" style={{backgroundColor : initial ? getBgColor() : "#1f1f1f"}}>{initial}</h1>
       </div>
+
+      {/* Available seats on the table */}
+      <p className="text-[#ababab] text-xs mt-2" >Seats: <span className="text-[#f5f5f5]">{seats}</span></p>
     </div>
   );
 };

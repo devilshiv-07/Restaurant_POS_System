@@ -296,6 +296,36 @@ export const pizzas = [
     name: "Pepperoni Pizza",
     price: 450,
     category: "Non-Vegetarian"
+  },
+  {
+    id: 4,
+    name: "Cheese and Onion",
+    price: 250,
+    category: "Vegetarian"
+  },
+  {
+    id: 5,
+    name: "Golden Corn",
+    price: 300,
+    category: "Vegetarian"
+  },
+  {
+    id: 6,
+    name: "Deluxe Veggie Pizza",
+    price: 600,
+    category: "Vegetarian"
+  },
+  {
+    id: 7,
+    name: "Black Olive Pizza",
+    price: 500,
+    category: "Vegetarian"
+  },
+  {
+    id: 8,
+    name: "Farm Fresh Pizza",
+    price: 450,
+    category: "Vegetarian"
   }
 ];
 

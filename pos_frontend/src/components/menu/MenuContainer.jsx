@@ -4,6 +4,19 @@ import { GrRadialSelected } from "react-icons/gr";
 
 const MenuContainer = () => {
   const [selected, setSelected] = useState(menus[0]);
+  const [itemCount, setItemCount] = useState(0);
+  const [itemId, setItemId] = useState();
+
+  const increment = (id) => {
+    setItemId(id);
+    if (itemCount >= 4) return;
+    setItemCount((count) => count + 1);
+  };
+  const decrement = (id) => {
+    setItemId(id);
+    if (itemCount <= 0) return;
+    setItemCount((count) => count - 1);
+  };
 
   return (
     <>
@@ -13,7 +26,11 @@ const MenuContainer = () => {
           // Menu items div
           <div
             key={menu.id}
-            onClick={() => setSelected(menu)}
+            onClick={() => {
+              setSelected(menu);
+              setItemId(0);
+              setItemCount(0);
+            }}
             className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[65px] cursor-pointer"
             style={{ backgroundColor: menu.bgColor }}
           >
@@ -37,25 +54,34 @@ const MenuContainer = () => {
 
       {/* Dishes menu container */}
       <div className="grid grid-cols-4 gap-3 px-10 py-4 w-[100%]">
-        {selected?.items.map((menu) => (
+        {selected?.items.map((item) => (
           // Dishes div
           <div
-            key={menu.id}
-            onClick={() => setSelected(menu)}
-            className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[70px] cursor-pointer bg-[#1a1a1a] hover:bg-[#2a2a2a]"
+            key={item.id}
+            className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[95px] cursor-pointer bg-[#1a1a1a] hover:bg-[#2a2a2a]"
           >
-            {/* Items div */}
+            {/* Items name */}
             <div className="flex items-center justify-between w-full">
               <h1 className="text-[#f5f5f5] text-sm font-thin tracking-wide">
-                {menu.icon} {menu.name}
+                {item.name}
               </h1>
-              {selected.id === menu.id && (
-                <GrRadialSelected className="text-white" size={12} />
-              )}
             </div>
-            <p className="text-[#ababab] text-xs font-thin tracking-wide">
-              {menu.items.length} Items
-            </p>
+
+            {/* Item Price and quantity to select */}
+            <div className="flex justify-between w-full items-center mb-1">
+              <p className="text-[#f5f5f5] text-sm tracking-wide font-bold">
+                ₹{item.price}
+              </p>
+              <div className="flex items-center justify-between rounded-full px-4 bg-[#1f1f1f] text-xs gap-4">
+                <button onClick={() => decrement(item.id)} className="text-yellow-500 text-lg">
+                  &minus;
+                </button>
+                <span className="text-white">{item.id === itemId ? itemCount : 0}</span>
+                <button onClick={() => increment(item.id)} className="text-yellow-500 text-lg">
+                  &#43;
+                </button>
+              </div>
+            </div>
           </div>
         ))}
       </div>

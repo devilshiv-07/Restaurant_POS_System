@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { menus } from "../../constants/index";
 import { GrRadialSelected } from "react-icons/gr";
+import { FaShoppingCart } from "react-icons/fa";
 
 const MenuContainer = () => {
   const [selected, setSelected] = useState(menus[0]);
@@ -65,6 +66,7 @@ const MenuContainer = () => {
               <h1 className="text-[#f5f5f5] text-sm font-thin tracking-wide">
                 {item.name}
               </h1>
+              <button className="bg-[#2e4a40] text-[#02ca3a] p-1 rounded" ><FaShoppingCart size={14}/></button>
             </div>
 
             {/* Item Price and quantity to select */}

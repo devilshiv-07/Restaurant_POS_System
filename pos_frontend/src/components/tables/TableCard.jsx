@@ -11,10 +11,10 @@ const TableCard = ({name, status, seats, initial}) => {
   }
 
   return (
-    <div onClick={handleClick} className="w-[225px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
+    <div onClick={handleClick} className="w-[240px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
 
       {/* Table No. and Book detail */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between mt-1.5">
 
         {/* Table no. */}
         <h1 className="text-[#c4c0c0] font-semibold">{name}</h1>
@@ -30,7 +30,7 @@ const TableCard = ({name, status, seats, initial}) => {
       </div>
 
       {/* Available seats on the table */}
-      <p className="text-[#ababab] text-xs mt-2" >Seats: <span className="text-[#f5f5f5]">{seats}</span></p>
+      <p className="text-[#ababab] text-sm mt-2" >Seats: <span className="text-[#f5f5f5]">{seats}</span></p>
     </div>
   );
 };

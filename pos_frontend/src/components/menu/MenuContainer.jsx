@@ -32,7 +32,7 @@ const MenuContainer = () => {
               setItemId(0);
               setItemCount(0);
             }}
-            className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[65px] cursor-pointer"
+            className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[75px] cursor-pointer"
             style={{ backgroundColor: menu.bgColor }}
           >
             {/* Items div */}

@@ -3,7 +3,7 @@ import { FaCheckDouble, FaCircle } from "react-icons/fa";
 
 const OrderCart = () => {
   return (
-    <div className="w-[360px] bg-[#262626] py-2 px-4 rounded-lg mr-6 h-[31%]">
+    <div className="w-[320px] bg-[#262626] py-2 px-4 rounded-lg h-[28%]">
       <div className="flex items-center gap-3">
         {/* user box */}
         <button className="bg-[#f6b100] p-1 text-md font-bold rounded-md">

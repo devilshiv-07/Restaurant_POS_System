@@ -20,7 +20,7 @@ const Greetings = () => {
         `${String(date.getHours()).padStart(2,'0')}:${String(date.getMinutes()).padStart(2,'0')}:${String(date.getSeconds()).padStart(2,'0')}`;
 
   return (
-    <div className='flex justify-between items-center px-8 mt-4'>
+    <div className='flex justify-between items-center px-8 mt-8'>
       {/* Greet */}
       <div>
         <h1 className='text-[#f5f5f5] text-[22px] font-semibold tracking-wide'>Good Morning, Devishiv</h1>

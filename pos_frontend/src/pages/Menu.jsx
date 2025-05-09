@@ -13,7 +13,7 @@ const Menu = () => {
       {/* Left div */}
       <div className="flex-[3]">
         {/* Header of Left div */}
-        <div className="flex items-center justify-between px-10 py-2 mt-2">
+        <div className="flex items-center justify-between px-10 py-2 mt-4">
           {/* Menu Heading */}
           <div className="flex items-center gap-4">
             <BackButton />
@@ -42,7 +42,7 @@ const Menu = () => {
       </div>
 
       {/* Right div */}
-      <div className="flex-[1] bg-[#1a1a1a] mt-4 mr-4 -ml-2 h-[78vh] rounded-lg pt-2">
+      <div className="flex-[1] bg-[#1a1a1a] my-6 mr-4 -ml-2 h-[78vh] rounded-lg pt-2">
 
         {/* Customer Info */}
         <CustomerInfo />

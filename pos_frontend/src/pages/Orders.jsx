@@ -44,7 +44,16 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-4 h-[70vh] py-2 px-10 gap-4">
+      <div className="scrollHide flex flex-wrap overflow-y-scroll my-5 h-[70vh] py-2 px-10 gap-8 justify-center">
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
+        <OrderCart />
         <OrderCart />
         <OrderCart />
         <OrderCart />

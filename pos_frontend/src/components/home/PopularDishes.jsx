@@ -2,13 +2,13 @@ import React from "react";
 import { popularDishes } from "../../constants/index";
 const PopularDishes = () => {
   return (
-    <div className="mt-6 pr-8">
+    <div className="mt-9 pr-8">
 
-      <div className="bg-[#1a1a1a] w-full overflow-hidden rounded-lg">
+      <div className="bg-[#1a1a1a] w-full overflow-hidden rounded-lg h-[76vh]">
 
         {/* Popular Dish tag */}
-        <div className="flex justify-between items-center px-6 pt-4 pb-2">
-          <h1 className="text-[#f5f5f5] text-md font-semibold tracking-wide">
+        <div className="flex justify-between items-center my-1 px-6 py-4">
+          <h1 className="text-[#f5f5f5] text-lg font-semibold tracking-wide">
             Popular Dishes
           </h1>
           <a href="" className="text-[#025cca] text-sm font-semibold">
@@ -17,12 +17,12 @@ const PopularDishes = () => {
         </div>
 
         {/* Dishes List */}
-        <div className="scrollHide mb-2 overflow-y-scroll h-[69vh]">
+        <div className="scrollHide mb-2 overflow-y-scroll h-[66vh]">
           {popularDishes.map((dish) => {
             return (
               <div
                 key={dish.id}
-                className="flex items-center gap-4 bg-[#1f1f1f] rounded-[15px] px-6 mt-4 py-2.5 mx-6"
+                className="flex items-center gap-4 bg-[#1f1f1f] rounded-[15px] px-6 mt-4 py-3 mx-6"
               >
                 <h1 className="text-[#f5f5f5] font-bold text-md mr-4">{dish.id < 10 ? `0${dish.id}` : `${dish.id}`}</h1>
                 <img

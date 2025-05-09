@@ -9,12 +9,12 @@ import PopularDishes from '../components/home/PopularDishes'
 
 const Home = () => {
   return (
-    <section className='bg-[#1f1f1f] h-[calc(100vh-5rem)] overflow-hidden flex gap-3'>
+    <section className='bg-[#1f1f1f] h-[85vh] overflow-hidden flex gap-3'>
       {/* left div */}
       <div className='flex-[3]'>
         <Greetings />
 
-        <div className='flex items-center w-full gap-8 px-8 mt-8'>
+        <div className='flex items-center w-full gap-8 px-8 mt-10'>
           <MiniCard title="Total Earning" icon={<BsCashCoin />} number={512} footerNum={1.6}/>
           <MiniCard title="In Progress" icon={<GrInProgress />} number={16} footerNum={9.6}/>
         </div>

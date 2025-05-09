@@ -29,7 +29,7 @@ const BottomNav = () => {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-[#262626] p-2 h-12 flex justify-around">
+    <div className="fixed bottom-0 left-0 right-0 bg-[#262626] p-2 h-[7vh] flex justify-around">
       {/* Home Button */}
       <button
         onClick={() => navigate("/")}

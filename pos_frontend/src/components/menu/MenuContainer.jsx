@@ -2,17 +2,32 @@ import React, { useState } from "react";
 import { menus } from "../../constants/index";
 import { GrRadialSelected } from "react-icons/gr";
 import { FaShoppingCart } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addItems } from "../../redux/slices/cartSlice";
 
 const MenuContainer = () => {
+  // Function to handle adding items to the cart
   const [selected, setSelected] = useState(menus[0]);
   const [itemCount, setItemCount] = useState(0);
   const [itemId, setItemId] = useState();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (item) => {
+    if (itemCount === 0) return;
+
+    const {name, price} = item;
+    const newObj = { id: new Date(), name, pricePerQuantity: price, quantity: itemCount, price: itemCount * price };
+
+    dispatch(addItems(newObj));
+    setItemCount(0);
+  }
 
   const increment = (id) => {
     setItemId(id);
     if (itemCount >= 4) return;
     setItemCount((count) => count + 1);
   };
+
   const decrement = (id) => {
     setItemId(id);
     if (itemCount <= 0) return;
@@ -66,7 +81,7 @@ const MenuContainer = () => {
               <h1 className="text-[#f5f5f5] text-sm font-thin tracking-wide">
                 {item.name}
               </h1>
-              <button className="bg-[#2e4a40] text-[#02ca3a] p-1 rounded" ><FaShoppingCart size={14}/></button>
+              <button onClick={() => handleAddToCart(item)} className="bg-[#2e4a40] text-[#02ca3a] p-1 rounded" ><FaShoppingCart size={14}/></button>
             </div>
 
             {/* Item Price and quantity to select */}

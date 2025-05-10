@@ -22,7 +22,16 @@ export const getBgColor = () => {
 export const getAvatarName = (name) => {
   if(!name) return "";
 
-  return name.split(" ").map(word => word[0]).join("").toUpperCase();
+  let initial = name.split(" ").map(word => word[0]).join("").toUpperCase();
+
+  if (initial.length > 2) {
+    initial = initial.slice(0, 2);
+  }
+  else if (initial.length === 1) {
+    initial = initial + initial;
+  }  
+
+  return initial;
 
 }
 

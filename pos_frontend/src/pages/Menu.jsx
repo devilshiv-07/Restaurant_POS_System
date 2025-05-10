@@ -6,8 +6,18 @@ import MenuContainer from "../components/menu/MenuContainer";
 import CustomerInfo from "../components/menu/CustomerInfo";
 import CartInfo from "../components/menu/CartInfo";
 import Bill from "../components/menu/Bill";
+import { useSelector } from "react-redux";
 
 const Menu = () => {
+
+  const customerData = useSelector(state => state.customer)
+  const { customerName, customerPhone, guests } = customerData;
+  const tableNo = customerData.tableNo;
+  const customerNameDisplay = customerName ? customerName : "Customer Name";
+  const customerPhoneDisplay = customerPhone ? customerPhone : "Customer Phone";
+  const guestsDisplay = guests ? guests : 0;
+  const tableNoDisplay = tableNo ? tableNo : "N/A";
+
   return (
     <section className="bg-[#1f1f1f] h-[calc(100vh-5rem)] overflow-hidden flex gap-3">
       {/* Left div */}
@@ -17,7 +27,7 @@ const Menu = () => {
           {/* Menu Heading */}
           <div className="flex items-center gap-4">
             <BackButton />
-            <h1 className="text-[#f5f5f5] text-xl font-bold tracking-wide">
+            <h1 className="text-[#f5f5f5] text-2xl font-bold tracking-wide">
               Menu
             </h1>
           </div>
@@ -25,13 +35,13 @@ const Menu = () => {
           {/* Admin info and selected table */}
           <div className="flex items-center justify-around gap-4">
             <div className="flex items-center gap-3 cursor-pointer">
-              <MdRestaurantMenu className="text-[#f5f5f5] text-2xl " />
+              <MdRestaurantMenu className="text-[#f5f5f5] text-3xl " />
               <div className="flex flex-col items-start">
                 <h1 className="text-sm text-[#f5f5f5]  font-semibold">
-                  Cumstomer Name
+                  {customerNameDisplay}
                 </h1>
                 <p className="text-xs text-[#ababab] font-medium">
-                  Table No: 12
+                  {tableNoDisplay}
                 </p>
               </div>
             </div>

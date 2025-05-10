@@ -32,19 +32,19 @@ const MenuContainer = () => {
               setItemId(0);
               setItemCount(0);
             }}
-            className="flex flex-col items-start justify-between px-4 py-2 rounded-lg h-[75px] cursor-pointer"
+            className="flex flex-col items-start justify-between px-4 py-2.5 rounded-lg h-[75px] cursor-pointer"
             style={{ backgroundColor: menu.bgColor }}
           >
             {/* Items div */}
             <div className="flex items-center justify-between w-full">
-              <h1 className="text-[#f5f5f5] text-sm font-thin tracking-wide">
+              <h1 className="text-[#f5f5f5] text-sm tracking-wide">
                 {menu.icon} {menu.name}
               </h1>
               {selected.id === menu.id && (
                 <GrRadialSelected className="text-white" size={12} />
               )}
             </div>
-            <p className="text-[#ababab] text-xs font-thin tracking-wide">
+            <p className="text-[#ababab] text-xs tracking-wide">
               {menu.items.length} Items
             </p>
           </div>

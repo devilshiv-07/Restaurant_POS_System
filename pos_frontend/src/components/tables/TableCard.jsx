@@ -1,17 +1,27 @@
 import React from "react";
 import { getBgColor } from '../../utils/index'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { updateTable } from "../../redux/slices/customerSlice";
 
-const TableCard = ({name, status, seats, initial}) => {
+const TableCard = ({key, name, status, seats, initials}) => {
 
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleClick = () => {
+
+  // Function to handle click on table card
+  // If the table is booked, do nothing else navigate to menu page
+  const handleClick = (name) => {
     if( status === "Booked") return
+
+    // Dispatch the action to set the table number
+    dispatch( updateTable({ tableNo: name }));
+
     navigate('/menu');
   }
 
   return (
-    <div onClick={handleClick} className="w-[240px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
+    <div onClick={() => handleClick(name)} className="w-[240px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e]">
 
       {/* Table No. and Book detail */}
       <div className="flex items-center justify-between mt-1.5">
@@ -26,7 +36,7 @@ const TableCard = ({name, status, seats, initial}) => {
 
       {/* User name logo */}
       <div className="flex items-center justify-center mt-4">
-        <h1 className="font-bold text-white rounded-full p-2" style={{backgroundColor : initial ? getBgColor() : "#1f1f1f"}}>{initial}</h1>
+        <h1 className="font-bold text-white rounded-full p-2" style={{backgroundColor : initials ? getBgColor() : "#1f1f1f"}}>{initials}</h1>
       </div>
 
       {/* Available seats on the table */}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev" : "nodemon app.js",
+    "dev": "nodemon app.js",
     "start": "node app.js"
   },
   "keywords": [],
@@ -13,6 +13,7 @@
   "dependencies": {
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
+    "http-errors": "^2.0.0",
     "mongoose": "^8.14.2"
   },
   "devDependencies": {

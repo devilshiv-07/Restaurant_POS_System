@@ -10,6 +10,10 @@ const globalErrorHandler = require('./middlewares/globalErrorHandler');
 const PORT = config.port;
 connectDB();
 
+// Middleware
+app.use(express.json()); // Parse JSON data
+app.use(express.urlencoded({ extended: true })); // Parse URL-encoded data
+
 // Root EndPoint
 app.get('/', (req, res) => {
 
@@ -18,6 +22,9 @@ app.get('/', (req, res) => {
 
     res.json({ message: 'Hello from the POS server!'});
 });
+
+// Other EndPoints
+app.use('/api/user/', require('./routes/userRoute'));
 
 // Global Error Handler
 app.use(globalErrorHandler);

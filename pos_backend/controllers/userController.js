@@ -3,7 +3,6 @@ const User = require("../models/userModel");
 
 const register = async (req, res, next) => {
     try {
-        console.log(req.body);
         const { name, phone, email, password, role } = req.body;
         if (!name || !email || !password || !role || !phone) {
             const error = createHttpError(400, "All fields are required!")

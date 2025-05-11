@@ -51,14 +51,14 @@ const Auth = () => {
         </h2>
 
         {/* Component  */}
-        {isRegister ? <Login /> : <Register /> }
+        {isRegister ? <Register setIsRegister={setIsRegister} /> : <Login />}
 
 
         <div className="flex justify-center mt-6">
           <p className="text-sm text-[#ababab]">
-            {isRegister ? "Create Account" : "Already have an account"}
+            {isRegister ? "Already have an account?" : "Don't have an account?"}
             <a onClick={() => setIsRegister(!isRegister)} className="text-yellow-400 font-semibold hover:underline pl-2" href="#">
-              {isRegister ? "Sign Up" : "Sign In"}
+              {isRegister ? "Sign in" : "Sign up"}
             </a>
           </p>
         </div>

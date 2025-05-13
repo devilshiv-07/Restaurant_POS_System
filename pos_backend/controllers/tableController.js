@@ -29,7 +29,10 @@ const addTable = async (req, res, next) => {
 
 const getTable = async (req, res, next) => {
     try {
-        const tables = await Table.find();
+        const tables = await Table.find().populate({
+            path: "currentOrder",
+            select: "cutomerDetails"
+    });
         res.status(200).json({success: true, message: "Tables fetched successfully", tables});
 
     } catch (error) {

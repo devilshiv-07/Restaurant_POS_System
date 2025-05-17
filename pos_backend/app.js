@@ -23,10 +23,6 @@ app.use(cookieParser()); // Parse cookies
 
 // Root EndPoint
 app.get('/', (req, res) => {
-
-    // const err = createHttpError(404, "Something went wrong!");
-    // throw err;
-
     res.json({ message: 'Hello from the POS server!'});
 });
 
@@ -34,6 +30,7 @@ app.get('/', (req, res) => {
 app.use('/api/user', require('./routes/userRoute'));
 app.use('/api/order', require('./routes/orderRoute'));
 app.use('/api/table', require('./routes/tableRoute'));
+app.use('/api/payment', require('./routes/paymentRoute'));
 
 // Global Error Handler
 app.use(globalErrorHandler);

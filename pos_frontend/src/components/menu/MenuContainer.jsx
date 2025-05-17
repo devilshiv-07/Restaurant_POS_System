@@ -16,7 +16,7 @@ const MenuContainer = () => {
     if (itemCount === 0) return;
 
     const {name, price} = item;
-    const newObj = { id: new Date(), name, pricePerQuantity: price, quantity: itemCount, price: itemCount * price };
+    const newObj = { id: new Date().toISOString(), name, pricePerQuantity: price, quantity: itemCount, price: itemCount * price };
 
     dispatch(addItems(newObj));
     setItemCount(0);

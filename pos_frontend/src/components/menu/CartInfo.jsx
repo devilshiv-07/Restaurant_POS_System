@@ -38,9 +38,9 @@ const CartInfo = () => {
             </h1>
           </div>
         ) : (
-          cartData.map((item) => {
+          cartData.map((item, index) => {
             return (
-              <div className="bg-[#1f1f1f] rounded-lg px-4 py-1.5 mb-2">
+              <div key={index} className="bg-[#1f1f1f] rounded-lg px-4 py-1.5 mb-2">
                 <div className="flex items-center justify-between">
                   <h1 className="text-[#ababab] font-semibold tracking-wide text-xs">
                     {item.name}

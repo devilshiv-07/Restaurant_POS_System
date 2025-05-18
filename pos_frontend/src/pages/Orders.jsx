@@ -1,9 +1,24 @@
 import React, { useEffect, useState } from "react";
 import BottomNav from "../components/shared/BottomNav";
-import OrderCart from "../components/orders/OrderCard";
+import OrderCard from "../components/orders/OrderCard";
 import BackButton from "../components/shared/BackButton";
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
+import { getOrders } from "../https/index";
+import { enqueueSnackbar } from "notistack"
 
 const Orders = () => {
+
+  const { data: resData, isError } = useQuery({
+    queryKey: ["orders"],
+    queryFn: async () => {
+      return await getOrders();
+    },
+    placeholderData: keepPreviousData
+  })
+
+  if ( isError ) {
+    enqueueSnackbar("Something went weong!", {variant: "error"});
+  }
 
   const [status, setStatus] = useState("all");
 
@@ -44,27 +59,14 @@ const Orders = () => {
         </div>
       </div>
 
-      <div className="scrollHide flex flex-wrap overflow-y-scroll my-5 h-[70vh] py-2 px-10 gap-8 justify-center">
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
-        <OrderCart />
+      <div className="scrollHide flex flex-wrap overflow-y-scroll my-5 max-h-[70vh] py-2 px-10 gap-8 justify-center">
+        {
+          resData?.data.data.length > 0 ? (
+            resData.data.data.map((order, index) => {
+              return <OrderCard key={index} order={order} />
+            })
+          ) : <p className="col-span-3 text-gray-500">No Orders Available</p>
+        }
       </div>
 
       <BottomNav />

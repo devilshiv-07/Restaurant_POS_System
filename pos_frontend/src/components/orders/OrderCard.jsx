@@ -4,7 +4,7 @@ import { getAvatarName, formatDateAndTime } from "../../utils/index";
 
 const OrderCart = ({ order }) => {
   return (
-    <div className="w-[380px] bg-[#262626] py-2 px-4 rounded-lg h-[28%]">
+    <div className="w-[400px] bg-[#262626] py-2 px-4 rounded-lg h-[28%]">
       <div className="flex items-center gap-3">
         {/* user box */}
         <button className="bg-[#f6b100] p-1 text-md font-bold rounded-md">

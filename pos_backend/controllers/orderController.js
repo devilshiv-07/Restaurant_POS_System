@@ -4,18 +4,12 @@ const mongoose = require('mongoose');
 
 const addOrder = async (req, res, next) => {
     try {
-        const { customerDetails, orderStatus, bills, items } = req.body;
-        const order = new Order({
-            customerDetails,
-            orderStatus,
-            bills,
-            items
-        });
-        const savedOrder = await order.save();
+        const order = new Order(req.body);
+         await order.save();
         res.status(201).json({
             status: 'success',
             message: 'Order created successfully',
-            data: savedOrder
+            data: order
         });
     } catch (error) {
         next(error);

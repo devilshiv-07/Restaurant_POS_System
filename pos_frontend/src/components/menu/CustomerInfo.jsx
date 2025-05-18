@@ -10,7 +10,6 @@ const CustomerInfo = () => {
   const { customerName } = customerData;
   const customerNameDisplay = customerName ? customerName : "Customer Name";
   const customerAvatar = getAvatarName(customerNameDisplay);
-  const customerAvatarDisplay = customerAvatar ? customerAvatar : "CN";
   const customerId = customerData.OrderId;
   const customerIdDisplay = customerId ? customerId : "N/A";
 
@@ -28,7 +27,7 @@ const CustomerInfo = () => {
       </div>
       {/* Customer name as logo */}
       <button className="bg-[#f6b100] p-2 text-lg font-bold rounded-lg">
-        {customerAvatarDisplay}
+        {customerAvatar}
       </button>
     </div>
   );

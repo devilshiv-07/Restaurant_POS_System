@@ -2,6 +2,7 @@ const Razorpay = require("razorpay");
 const config = require("../config/config");
 const crypto = require("crypto");
 const createHttpError = require("http-errors");
+const Payment = require("../models/paymentModel");
 
 const createOrder = async (req, res, next) => {
   const razorpay = new Razorpay({
@@ -27,7 +28,8 @@ const createOrder = async (req, res, next) => {
 
 const verifyPayment = async (req, res, next) => {
   try {
-    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } = req.body;
+    const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
+      req.body;
 
     const expectedSignature = crypto
       .createHmac("sha256", config.razorpaySecretKey)
@@ -35,19 +37,18 @@ const verifyPayment = async (req, res, next) => {
       .digest("hex");
 
     if (expectedSignature === razorpay_signature) {
-      res.json({ success: true, message: "Payment verified successfully!"});
+      res.json({ success: true, message: "Payment verified successfully!" });
     } else {
       const error = createHttpError(400, "Payment verification failed!");
       return next(error);
-    }    
+    }
   } catch (error) {
     next(error);
   }
-}
+};
 
 const webHookVerification = async (req, res, next) => {
   try {
-
     const secret = config.razorpayWebhookSecret;
     const signature = req.headers["x-razorpay-signature"];
 
@@ -58,22 +59,36 @@ const webHookVerification = async (req, res, next) => {
       .update(body)
       .digest("hex");
 
-    if(expectedSignature === signature) {
+    if (expectedSignature === signature) {
       console.log("✅ Webhook verified", req.body);
 
       if (req.body.event === "payment.captured") {
         const payment = req.body.payload.payment.entity;
         console.log(`Payment Captured: ${payment.amount / 100} INR`);
+
+        const newPayment = new Payment({
+          paymentId: payment.id,
+          orderId: payment.order_id,
+          amount: payment.amount / 100,
+          currency: payment.currency,
+          status: payment.status,
+          method: payment.method,
+          email: payment.email,
+          contact: payment.contact,
+          createdAt: new Date(payment.created_at * 1000)
+        });
+
+        await newPayment.save();
       }
-      res.json({ success: true});
+
+      res.json({ success: true });
     } else {
       const error = createHttpError(400, "❌ Invalid Signature!");
       return next(error);
     }
-    
   } catch (error) {
     next(error);
   }
-}
+};
 
 module.exports = { createOrder, verifyPayment, webHookVerification };

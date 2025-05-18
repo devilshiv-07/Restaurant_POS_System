@@ -4,18 +4,19 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
 import { updateTable } from "../../redux/slices/customerSlice";
 
-const TableCard = ({id, name, status, seats, initials}) => {
-
+const TableCard = ({ _id, name, status, seats, initials}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   // Function to handle click on table card
   // If the table is booked, do nothing else navigate to menu page
-  const handleClick = (name) => {
+  const handleClick = () => {
     if( status === "Booked") return
 
+    const table = { tableId: _id, tableNo: name }
+
     // Dispatch the action to set the table number
-    dispatch( updateTable({ tableNo: name }));
+    dispatch( updateTable({ table }));
 
     navigate('/menu');
   }

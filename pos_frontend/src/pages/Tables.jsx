@@ -18,11 +18,11 @@ const Tables = () => {
     placeholderData: keepPreviousData
   });
 
+  console.log(resData);
+
   if( isError ){
     enqueueSnackbar( "Something went wrong!", { variant: "error" })
   }
-
-  console.log(resData);
 
   return (
     <section className="bg-[#1f1f1f] h-[85vh] overflow-hidden">
@@ -64,8 +64,8 @@ const Tables = () => {
 
       <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-6 h-[70vh] gap-6 align-center justify-center">
         {
-          resData?.data.tables.map((table) => (
-            <TableCard key={table._id} name={table.tableNo} status={table.status} initials={table?.currentOrder?.customerDatails.name} seats={table.seats} />
+          resData?.data.tables.map((table,index) => (
+            <TableCard key={index} _id={table._id} name={table.tableNo} status={table.status} initials={table?.currentOrder?.customerDetails.name} seats={table.seats} />
           ))
         }
       </div>

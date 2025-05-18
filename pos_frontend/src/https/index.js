@@ -18,7 +18,11 @@ export const logout = () => api.post("/api/user/logout");
 // Table Endpoints
 export const addTable = (data) => api.post("/api/table/", data);
 export const getTables = () => api.get("/api/table/");
+export const updateTable = ({tableId, ...tableData}) => api.put(`/api/table/${tableId}`, tableData);
 
 // Payment Endpoints
 export const createOrderRazorpay = (data) => api.post("/api/payment/create-order", data);
 export const verifyPaymentRazorpay = (data) => api.post("/api/payment/verify-payment", data);
+
+// Order Endpoints
+export const addOrder = (data) => api.post("/api/order/", data);

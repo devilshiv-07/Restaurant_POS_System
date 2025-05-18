@@ -3,8 +3,6 @@ import { FaCheckDouble, FaCircle } from "react-icons/fa";
 import { getAvatarName, formatDateAndTime } from "../../utils/index";
 
 const OrderCart = ({ order }) => {
-  console.log(order);
-
   return (
     <div className="w-[380px] bg-[#262626] py-2 px-4 rounded-lg h-[28%]">
       <div className="flex items-center gap-3">

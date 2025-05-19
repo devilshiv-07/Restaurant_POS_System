@@ -8,7 +8,7 @@ import { getTables } from "../https";
 import { enqueueSnackbar } from "notistack";
 
 const Tables = () => {
-  const [status, setStatus] = useState("all");
+  const [status, setStatus] = useState("All");
 
   const { data: resData, isError }  = useQuery({
     queryKey: ["tables"],
@@ -18,11 +18,12 @@ const Tables = () => {
     placeholderData: keepPreviousData
   });
 
-  console.log(resData);
-
   if( isError ){
     enqueueSnackbar( "Something went wrong!", { variant: "error" })
   }
+
+  console.log(resData);
+  const filteredTables = status === "All" ? resData?.data.tables || [] : resData?.data.tables.filter((table) => table.status === status) || []
 
   return (
     <section className="bg-[#1f1f1f] h-[85vh] overflow-hidden">
@@ -38,33 +39,25 @@ const Tables = () => {
           </h1>
         </div>
 
-        {/* See Tables Status */}
+        {/* Filter Buttons */}
         <div className="flex items-center justify-around gap-4">
-          {/* ALL */}
-          <button
-            onClick={() => setStatus("all")}
+          {["All", "Available", "Booked"].map((label, index) => (
+            <button
+            key={index}
+            onClick={() => setStatus(label)}
             className={`text-[#ababab] text-sm font-semibold ${
-              status === "all" ? "bg-[#383838]" : ""
+              status === label ? "bg-[#383838]" : ""
             } rounded-lg px-4 py-1.5`}
           >
-            All
+            {label}
           </button>
-
-          {/* Booked */}
-          <button
-            onClick={() => setStatus("booked")}
-            className={`text-[#ababab] text-sm font-semibold ${
-              status === "booked" ? "bg-[#383838]" : ""
-            } rounded-lg px-4 py-1.5`}
-          >
-            Booked
-          </button>
+          ))}
         </div>
       </div>
 
-      <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-6 h-[70vh] gap-6 align-center justify-center">
+      <div className="scrollHide flex flex-wrap overflow-y-scroll mx-10 my-6 max-h-[68vh] gap-9 align-center justify-center">
         {
-          resData?.data.tables.map((table,index) => (
+          filteredTables.map((table,index) => (
             <TableCard key={index} _id={table._id} name={table.tableNo} status={table.status} initials={table?.currentOrder?.customerDetails.name} seats={table.seats} />
           ))
         }

@@ -22,7 +22,7 @@ const TableCard = ({ _id, name, status, seats, initials}) => {
   }
 
   return (
-    <div onClick={() => handleClick(name)} className="w-[240px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer mr-2 hover:bg-[#2e2e2e] flex flex-col justify-between pb-4">
+    <div onClick={() => handleClick(name)} className="w-[240px] bg-[#262626] py-2 px-4 rounded-lg h-[27%] cursor-pointer hover:bg-[#2e2e2e] flex flex-col justify-between pb-4">
 
       {/* Table No. and Book detail */}
       <div className="flex items-center justify-between mt-1.5">

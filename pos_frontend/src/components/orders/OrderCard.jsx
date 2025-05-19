@@ -62,7 +62,7 @@ const OrderCart = ({ order }) => {
       {/* Total */}
       <div className="flex justify-between items-center mt-2">
         <h1 className="text-[#f5f5f5] text-sm font-semibold">Total</h1>
-        <p className="text-[#f5f5f5] text-xs font-semibold">₹ {order.bills.totalWithTax}</p>
+        <p className="text-[#f5f5f5] text-xs font-semibold">₹ {order.bills.totalWithTax.toFixed(2)}</p>
       </div>
     </div>
   );

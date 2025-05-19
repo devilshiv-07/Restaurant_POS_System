@@ -5,6 +5,7 @@ import { enqueueSnackbar } from "notistack";
 import { addOrder, createOrderRazorpay, updateTable, verifyPaymentRazorpay } from "../../https";
 import { useMutation } from "@tanstack/react-query";
 import { removeCustomer } from "../../redux/slices/customerSlice";
+import Invoice from "../invoice/Invoice";
 
 // Razorpay script function
 const loadScript = (src) => {
@@ -34,11 +35,20 @@ const Bill = () => {
   const totalPriceWithTax = total + tax;
 
   const [paymentMethod, setPaymentMethod] = useState();
+  const [showInvoice, setShowInvoice] = useState(false);
+  const [orderInfo, setOrderInfo] = useState();
 
   // function to place order
   const handlePlaceOrder = async () => {
+    // Check the payment method is selected or not
     if (!paymentMethod) {
       enqueueSnackbar("Please select a payment method", { variant: "warning" });
+      return;
+    }
+
+    // Check, is there anything in card or not
+    if (cartData.length === 0) {
+      enqueueSnackbar("Please select something to order", { variant: "warning" });
       return;
     }
 
@@ -91,7 +101,12 @@ const Bill = () => {
                 totalWithTax: totalPriceWithTax,
               },
               items: cartData,
-              table: customerData.table.tableId
+              table: customerData.table.tableId,
+              paymentMethod: paymentMethod,
+              paymentData: {
+                razorpay_order_id: response.razorpay_order_id,
+                razorpay_payment_id: response.razorpay_payment_id,
+              }
             };
 
             setTimeout(() => {
@@ -141,8 +156,8 @@ const Bill = () => {
     mutationFn: (reqData) => addOrder(reqData),
     onSuccess: (resData) => {
       const { data } = resData.data;
-      console.log("This is response data");
-      console.log(resData.data);
+
+      setOrderInfo(data);
 
       // Update Table
       const tableData = {
@@ -158,6 +173,7 @@ const Bill = () => {
       enqueueSnackbar("Order Placed!", {
         variant: "success",
       });
+      setShowInvoice(true);
     },
     onError: (error) => {
       console.log(error);
@@ -177,7 +193,7 @@ const Bill = () => {
   });
 
   return (
-    <div>
+    <>
       <div className="flex items-center justify-between px-5 mt-1">
         <p className="text-xs text-[#ababab] font-medium">
           Items({cartData.length})
@@ -225,7 +241,9 @@ const Bill = () => {
           Place Order
         </button>
       </div>
-    </div>
+
+      {showInvoice && <Invoice orderInfo={orderInfo} setShowInvoice={setShowInvoice} />}
+    </>
   );
 };
 

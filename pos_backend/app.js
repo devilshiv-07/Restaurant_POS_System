@@ -15,7 +15,7 @@ connectDB();
 // Middleware
 app.use(cors({
     credentials: true,
-    origin: ["http://localhost:5173"]
+    origin: ["https://restaurant-pos-system-omega.vercel.app"]
 }));
 app.use(express.json()); // Parse JSON data
 app.use(cookieParser()); // Parse cookies

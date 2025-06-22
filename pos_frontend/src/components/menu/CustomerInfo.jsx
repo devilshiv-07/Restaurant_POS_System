@@ -4,7 +4,7 @@ import { formatDate, getAvatarName } from "../../utils";
 
 const CustomerInfo = () => {
 
-  const [date, setDate] = useState(new Date());
+  const [date] = useState(new Date());
 
   const customerData = useSelector(state => state.customer)
   const { customerName } = customerData;

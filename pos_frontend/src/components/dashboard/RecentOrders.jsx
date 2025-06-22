@@ -15,7 +15,7 @@ const RecentOrders = () => {
 
   const orderStatusUpdateMutation = useMutation({
     mutationFn: ({orderId, orderStatus}) => updateOrderStatus({orderId, orderStatus}),
-    onSuccess: (data) => {
+    onSuccess: () => {
       enqueueSnackbar("Order status updated successfully!", { variant: "success" });
       queryClient.invalidateQueries(["orders"]); // Refresh order list
     },

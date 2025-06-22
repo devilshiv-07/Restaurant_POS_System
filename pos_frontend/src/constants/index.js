@@ -467,9 +467,9 @@ export const orders = [
 ];
 
 
-const buttons = [
-  // { label: "Add Table", icon: <MdTableBar />, action: "table" },
-  // { label: "Add Category", icon: <MdCategory />, action: "category" },
-  // { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
-];
-const tabs = ["Metrics", "Orders", "Payments"];
+// const buttons = [
+//   { label: "Add Table", icon: <MdTableBar />, action: "table" },
+//   { label: "Add Category", icon: <MdCategory />, action: "category" },
+//   { label: "Add Dishes", icon: <BiSolidDish />, action: "dishes" },
+// ];
+// const tabs = ["Metrics", "Orders", "Payments"];

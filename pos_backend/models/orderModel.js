@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const orderSchema = new mongoose.Schema({
     customerDetails: {
         name: { type: String, required: true },
-        phone: { type: String, requried: true},
+        phone: { type: String, required: true},
         guests: { type: Number, required: true },
     },
     orderStatus: {
@@ -12,7 +12,7 @@ const orderSchema = new mongoose.Schema({
     },
     orderDate: {
         type: Date,
-        default : Date.now()
+        default : Date.now
     },
     bills: {
         total: { type: Number, required: true },

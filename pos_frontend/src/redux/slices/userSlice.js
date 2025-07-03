@@ -6,7 +6,8 @@ const initialState = {
     email : "",
     phone: "",
     role: "Admin",
-    isAuth: false
+    isAuth: false,
+    logoutInProgress: false
 }
 
 const userSlice = createSlice({
@@ -21,6 +22,7 @@ const userSlice = createSlice({
             state.email = email;
             state.role = role;
             state.isAuth = true;
+            state.logoutInProgress = false;
         },
 
         removeUser: (state) => {
@@ -30,9 +32,14 @@ const userSlice = createSlice({
             state.phone = "";
             state.role = "";
             state.isAuth = false;
+            state.logoutInProgress = false;
+        },
+
+        setLogoutInProgress: (state, action) => {
+            state.logoutInProgress = action.payload;
         }
     }
 })
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, setLogoutInProgress } = userSlice.actions;
 export default userSlice.reducer;

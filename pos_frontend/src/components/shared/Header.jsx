@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IoLogOut } from "react-icons/io5";
 import { useMutation } from "@tanstack/react-query";
 import { logout } from "../../https";
-import { removeUser } from "../../redux/slices/userSlice";
+import { removeUser, setLogoutInProgress } from "../../redux/slices/userSlice";
 import { useNavigate } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 
@@ -15,14 +15,18 @@ const Header = () => {
   const navigate = useNavigate();
 
   const logoutMutation = useMutation({
-    mutationFn: () => logout(),
+    mutationFn: () => {
+      dispatch(setLogoutInProgress(true));
+      return logout();
+    },
     onSuccess: (data) => {
       console.log(data);
       dispatch(removeUser());
-      navigate("/auth");
+      navigate("/auth", { replace: true });
     },
     onError: (error) => {
       console.log(error);
+      dispatch(setLogoutInProgress(false));
     },
   });
 
